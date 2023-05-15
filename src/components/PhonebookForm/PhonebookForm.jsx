@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Formik, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
+import FormField from './FormField'
 
 
 import { SubmitBtn, PhoneBookForm } from './Phonebook.styled';
@@ -16,7 +17,7 @@ class Phonebook extends  Component {
     };
 
     onInputChange = (e) => {
-        const { name, value } = e.currentTarget;
+        const { name, value } = e.target;
 
         this.setState({ [name]: value})
     };
@@ -39,28 +40,18 @@ class Phonebook extends  Component {
     return <>
     <Formik initialValues={InitialValues} onSubmit={this.onSubmit} >
     <PhoneBookForm>
-        <label>
-            Name
-            <Field
-            onChange={this.onInputChange}
-            value={name}
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            />
-            <ErrorMessage name="name" component="div"/>
-        </label>
-        <label>
-            Number
-            <Field
-            onChange={this.onInputChange}
-            value={number}
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            />
-            <ErrorMessage name="number" component="div"/>
-        </label>
+        <FormField 
+        name="name"
+        onChange={this.onInputChange}
+        value={name}
+        pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+        />
+        <FormField
+        name="number"
+        onChange={this.onInputChange}
+        value={number}
+        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+        />
         <SubmitBtn type="submit">Add contact</SubmitBtn>
     </PhoneBookForm>
     </Formik>

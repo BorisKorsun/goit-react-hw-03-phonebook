@@ -20,7 +20,6 @@ class App extends Component {
     };
 
     componentDidMount() {
-        console.log('mount');
         const savedContacts = JSON.parse(localStorage.getItem('contacts'))
 
         if (!savedContacts) {
