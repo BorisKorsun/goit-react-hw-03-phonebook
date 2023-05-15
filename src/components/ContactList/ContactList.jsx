@@ -19,9 +19,6 @@ const ContactList = ({ contacts, onClick }) => {
     </ul>
 };
 
-{/* <p>{name}: {number}</p>
-                <button id={id} onClick={e => onClick(e.currentTarget.id)} type="button">Delete contact</button> */}
-
 export default ContactList;
 
 ContactList.propTypes = {
